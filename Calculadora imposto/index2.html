@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function Exibir(){
+            var No = document.getElementById("Nome").value;
+            var Ida = document.getElementById("Idade").value;
+            var SalAnu = parseInt(document.getElementById("Salário Anual").value);
+            var IR = 0;
+            var Salmensal = SalAnu / 12;
+
+
+            if (Salmensal <= 2500){
+               
+                IR = 0;
+
+            }else if(SalAnu >= 2501 && Salmensal <= 3500){
+                
+                IR = (Salmensal / 100) *10;
+
+            }else if(SalAnu >= 3500 && Salmensal <= 4500){
+                
+                IR = (Salmensal / 100) *15;
+
+            }else if(SalAnu >= 4500){
+                
+                IR = (Salmensal / 100) *27;
+
+            }
+
+            var Resultado = "Olá "+No+" Você tem "+Ida+" Anos, Seu Salário Anual é "+SalAnu+" Seu Salário Mensal é "+Salmensal+" e seu Imposto é "+IR;
+            document.getElementById('texto').innerText = Resultado;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Cálculo de Imposto de Renda</h1>
+    <input type="text" id="Nome" placeholder="Nome">
+    <input type="number" id="Idade" placeholder="Idade">
+    <input type="number" id="Salário Anual" placeholder="Salário">
+    <button onclick="Exibir()">Exibir</button>
+    <p id="texto"></p>
+</body>
+</html>
