@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Imposto de Renda</title>
+    <script>
+        function calcularImposto() {
+            // Lendo os dados fornecidos pelo usuário
+            var nome = document.getElementById("nome").value;
+            var renda = parseFloat(document.getElementById("renda").value);
+
+            // Variáveis para cálculo do imposto e dedução
+            var imposto = 0;
+            var desconto = 0;
+
+            // Tabela progressiva do imposto de renda (valores fictícios para exemplo)
+            if (renda <= 1903.98) {
+                imposto = 0;
+                desconto = 0;
+            } else if (renda <= 2826.65) {
+                imposto = (renda * 0.075) - 142.80;
+                desconto = 142.80;
+            } else if (renda <= 3751.05) {
+                imposto = (renda * 0.15) - 354.80;
+                desconto = 354.80;
+            } else if (renda <= 4664.68) {
+                imposto = (renda * 0.225) - 636.13;
+                desconto = 636.13;
+            } else {
+                imposto = (renda * 0.275) - 869.36;
+                desconto = 869.36;
+            }
+
+            // Exibindo o resultado
+            document.getElementById("resultado").innerHTML = `
+                <h3>Resultado do Cálculo:</h3>
+                <p><strong>Nome:</strong> ${nome}</p>
+                <p><strong>Renda mensal:</strong> R$ ${renda.toFixed(2)}</p>
+                <p><strong>Imposto devido:</strong> R$ ${imposto.toFixed(2)}</p>
+                <p><strong>Desconto aplicado:</strong> R$ ${desconto.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <h1>Cálculo do Imposto de Renda</h1>
+
+    <form onsubmit="event.preventDefault(); calcularImposto();">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" required><br><br>
+
+        <label for="renda">Renda mensal (R$):</label><br>
+        <input type="number" id="renda" step="0.01" required><br><br>
+
+        <input type="submit" value="Calcular Imposto">
+    </form>
+
+    <div id="resultado"></div>
+</body>
+</html>
+Como funciona:
+Leitura dos dados: O usuário insere o nome e a renda mensal nos campos de entrada.
+Cálculo do imposto: A tabela de imposto de renda é aplicada com as alíquotas e deduções especificadas. O cálculo é feito com base na renda inserida pelo usuário.
+Exibição do resultado: Após o cálculo, o nome do usuário, a renda mensal, o imposto devido e o desconto aplicado são exibidos na tela.
+Tabela do Imposto (fictícia, para exemplo):
+Até R$ 1.903,98: isento.
+De R$ 1.903,99 até R$ 2.826,65: 7,5% (dedução de R$ 142,80).
+De R$ 2.826,66 até R$ 3.751,05: 15% (dedução de R$ 354,80).
+De R$ 3.751,06 até R$ 4.664,68: 22,5% (dedução de R$ 636,13).
+Acima de R$ 4.664,68: 27,5% (dedução de R$ 869,36).

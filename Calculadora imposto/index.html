@@ -8,7 +8,6 @@
     <script>
         function exibirnome(){
             var n = document.getElementById("nome").value;
-            var i = document.getElementById("idade").value;
             var s = document.getElementById("seguro").value;
 
             if (i>=18 && i<=25){
@@ -19,17 +18,16 @@
                 s = s *1.10;
             }
 
-            var resultado ="Olá4 "+n+", vc me deve "+s;
+            var resultado ="Seu nome é: "+n+", Seu imposto a pagar é: "+s;
             document.getElementById("print").innerHTML = resultado;
         }
     </script>
 </head>
 <body>
     <h1>Calculando imposto de renda</h1>
-    <input type="text" id="nome" placeholder="Bota o nome porra!!!">
-    <input type="number" id="idade" placeholder="Mostra o RG!!!">
-    <input type="number" id="seguro" placeholder="Quanto ganha pobre!!!">
-    <button onclick="exibirnome()">Exibir</button>
+    <input type="text" id="nome" placeholder="Incira seu Nome:">
+    <input type="number" id="seguro" placeholder="Insira sua renda mensal (na moeda R$):">
+    <button onclick="exibirnome()">Calcular</button>
     <p id="print"></p>
 </body>
 </html>

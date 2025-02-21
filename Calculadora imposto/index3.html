@@ -6,26 +6,35 @@
     <title>Document</title>
 
     <script>
-        function Exibir(){
-            var No = document.getElementById("Nome").value;
-            var Ida = document.getElementById("Idade").value;
-            var SalAnu = parseInt(document.getElementById("Salário Anual").value);
-            var IR = 0;
-            var Salmensal = SalAnu / 12;
+        function exibir(){
+            var Nome = document.getElementById("Nome").value;
+            var Salmen = parseFloat(document.getElementById("renda").value);
+            var impo = 0;
+            var descon = 0;
 
-            // Verificar a faixa de salário mensal e calcular o imposto
-            if (Salmensal <= 2500){
-                IR = 0; // Nenhum imposto se o salário for até 2500
-            }else if(Salmensal >= 2501 && Salmensal < 3500){
-                IR = (Salmensal * 10) / 100; // 10% de imposto
-            }else if(Salmensal >= 3500 && Salmensal < 4500){
-                IR = (Salmensal * 15) / 100; // 15% de imposto
-            }else if(Salmensal >= 4500){
-                IR = (Salmensal * 27) / 100; // 27% de imposto
+
+
+            if (Salmen <= 2259.20) {
+                impo = 0;
+                descon = 0; 
+            }else if(Salmen <= 2826.65) {
+                impo = (Salmen * 0.075) - 169.44 ; 
+                descon = 169.44;
+            }else if(Salmen <= 3751.05) {
+                impo = (Salmen * 0.15) - 381.44; 
+                descon = 381.44;
+            }else if(Salmen <= 4664.68) {
+                impo = (Salmen * 0.225) - 662.77; 
+                descon = 662.77;
+            }else{
+                impo = (Salmen * 0.275) - 896.00;
+                descon = 896.00;
             }
 
-            // Exibir o resultado
-            var Resultado = "Seu nome: " + No + ". Sua Idade: " + Ida + " anos. Seu Salário Anual é " + SalAnu + " e seu Salário Mensal é " + Salmensal + ". O imposto é de R$ " + IR.toFixed(2) + ".";
+
+
+            
+            var Resultado = "Seu nome é: " + Nome +", Sua renda mensal é: " + Salmen.toFixed(2) + ", Seu imposto a pagar é de R$: " + impo.toFixed(2) + ", Seu desconto é:" + descon.toFixed(2) + ".";
             document.getElementById('texto').innerText = Resultado;
         }
     </script>
@@ -35,9 +44,8 @@
 <body>
     <h1>Cálculo de Imposto de Renda</h1>
     <input type="text" id="Nome" placeholder="Nome">
-    <input type="number" id="Idade" placeholder="Idade">
-    <input type="number" id="Salário Anual" placeholder="Salário Anual">
-    <button onclick="Exibir()">Exibir</button>
+    <input type="number" id="renda" placeholder="Salário Anual">
+    <button onclick="exibir()">Exibir</button>
     <p id="texto"></p>
 </body>
 </html>
