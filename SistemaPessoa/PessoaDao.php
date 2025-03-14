@@ -1,5 +1,6 @@
 <?php
 //Crud - create,read,update,delete (cadastrar, buscar, atualizar, apagar)
+include("modelPessoa.php");
 include("conexao.php");
 
 class PessoaDao{
@@ -7,7 +8,7 @@ class PessoaDao{
         $sql = "insert into pessoa (cpf, nome, contato) values (?, ?, ?)";
         $bd = new Conexao();
         $banco = $bd->getConexao();
-        $stm = $bd->prepare($sql);
+        $stm = $bd-> prepare(query: $sql);
         $stm->bindValue(1, $pessoa->get_Cpf());
         $stm->bindValue(2, $pessoa->get_Nome());
         $stm->bindValue(3, $pessoa->get_Contato());
