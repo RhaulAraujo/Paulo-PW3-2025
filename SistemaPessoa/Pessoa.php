@@ -1,29 +1,27 @@
 <?php
-    //Entidade Pessoa
-    class pessoa {
-        private $nome, $cpf, $contato;
+    //Objeto Entidade Pessoa
+    class Pessoa{   
+        private $cpf, $nome, $contato;
 
-        public function get_Cpf(){
+        public function getCpf(){
             return $this->cpf;
         }
-
-        public function set_Cpf($cpf){
+        public function setCpf($cpf){
             $this->cpf = $cpf;
         }
 
-        public function get_Nome(){
+        public function getNome(){
             return $this->nome;
         }
-
-        public function set_Nome($nome){
+        public function setNome($nome){
             $this->nome = $nome;
         }
 
-        public function get_Contato(){
+        public function getContato(){
             return $this->contato;
         }
-
-        public function set_Contato($contato){
+        public function setContato($contato){
             $this->contato = $contato;
         }
     }
+?>
