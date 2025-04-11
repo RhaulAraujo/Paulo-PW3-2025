@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Imposto de Renda</title>
+    <script>
+        function Multiplicar() {
+            var nome = document.getElementById("nome").value;
+            var a = parseFloat(document.getElementById("num").value);
+
+            var imposto = 0;
+            var desconto = 0;
+
+         
+
+            document.getElementById("resultado").innerHTML = `
+                <h3>Resultado do Cálculo:</h3>
+                <p><strong>Nome:</strong> ${nome}</p>
+                <p><strong>Renda mensal:</strong> R$ ${renda.toFixed(2)}</p>
+                <p><strong>Imposto devido:</strong> R$ ${imposto.toFixed(2)}</p>
+                <p><strong>Desconto aplicado:</strong> R$ ${desconto.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+
+    <form onsubmit="event.preventDefault(); calcularImposto();">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" required><br><br>
+
+        <label for="renda">Renda mensal (R$):</label><br>
+        <input type="number" id="renda" step="0.01" required><br><br>
+
+        <input type="submit" value="Calcular Imposto">
+    </form>
+
+    <div id="resultado"></div>
+</body>
+</html>
